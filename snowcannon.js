@@ -179,8 +179,8 @@ if (cluster.isMaster) {
                 var cookieContents = cookieManager.getCookieContents(config.cookie.domainName);
                 
                 var event = buildEvent(request, cookies, now);
-
-                if ((cookies.sp && cookies.age !== 'new') || url.parse(request.url).pathname === '/r') {
+	        // @XXX: hack.
+                if (true) { //(cookies.sp && cookies.age !== 'new') || url.parse(request.url).pathname === '/r') {
                     responses.sendCookieAndPixel(response, cookies.sp, config.cookie.milliseconds, cookieContents);
                     logToSink(event);
                 } else {
