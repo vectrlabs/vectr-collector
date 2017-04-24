@@ -88,7 +88,7 @@ var buildEvent = function(request, cookies, timestamp) {
         parsedUrl.pathname, // cs-uri-stem
         200, // sc-status
         request.headers['referrer'] || '',// cs(Referrer)
-        request.headers['user-agent'],// cs(User-Agent)
+        request.headers['user-agent'] || '',// cs(User-Agent)
         JSON.stringify(q.parse(parsedUrl.query)), // cs-uri-query
         '-',
         '-',
