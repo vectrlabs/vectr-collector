@@ -9,6 +9,8 @@
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
 
+var q = require('querystring');
+
 /**
  * SnowCannon
  *
@@ -87,11 +89,12 @@ var buildEvent = function(request, cookies, timestamp) {
         200, // sc-status
         request.headers['referrer'] || '',// cs(Referrer)
         request.headers['user-agent'],// cs(User-Agent)
-        parsedUrl.query, // cs-uri-query
-        '-',   
+        JSON.stringify(q.parse(parsedUrl.query)), // cs-uri-query
+        '-',
         '-',
         '-'
     ]);
+console.log(event);
     return event;
 };
 
