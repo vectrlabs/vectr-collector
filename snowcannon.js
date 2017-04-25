@@ -103,7 +103,7 @@ var buildEvent = function(request, cookies, timestamp) {
         path: parsedUrl.pathname, // cs-uri-stem
         referrer: request.headers['referrer'] || '',// cs(Referrer)
         ua: request.headers['user-agent'] || '',// cs(User-Agent)
-        data: JSON.stringify(q.parse(parsedUrl.query)) // cs-uri-query
+        data: q.parse(parsedUrl.query) // cs-uri-query
       }
     );
 
