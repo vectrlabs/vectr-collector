@@ -40,7 +40,7 @@ s3Sink.upload = function(config) {
 		zlib.gzip(outputLog, function(err, buffer) {
 			if (!err) {
 				var date = new Date();
-				var req = client.put(uniqueName + 'd' + date.getTime(), + '.json.gz', {
+				var req = client.put(uniqueName + 'D' + date.getTime() + '.json.gz', {
 					'Content-Length': buffer.length,
 			 		'Content-Type': 'application/gzip'
 				});
