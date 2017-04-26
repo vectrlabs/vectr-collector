@@ -38,7 +38,7 @@ config.sink.out = "s3"; // Or "s3" or "fluentd"
  */
 
 // How often to push data to S3
-config.sink.s3.flushSeconds = 600;
+config.sink.s3.flushSeconds = 1 ; //600;
 
 // S3 bucket name
 config.sink.s3.bucket = process.env.S3_BUCKET || 'S3 Bucket';
