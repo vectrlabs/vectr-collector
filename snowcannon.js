@@ -106,6 +106,12 @@ var buildEvent = function(request, cookies, timestamp) {
         data: q.parse(parsedUrl.query) // cs-uri-query
       };
 
+
+    // parse custom context
+    if (event.data.co) {
+      event.data.co = JSON.parse(event.data.co);
+    }
+
     return event;
 };
 
