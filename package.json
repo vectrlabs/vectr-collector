@@ -6,8 +6,8 @@
   "contributors": [
     "Alex Dean <support@snowplowanalytics.com>"
   ],
- "scripts": {
-    "start":"node snowcannon"
+  "scripts": {
+    "start": "node snowcannon"
   },
   "main": "snowcannon.js",
   "repository": {
@@ -23,16 +23,18 @@
   ],
   "dependencies": {
     "cluster": "0.7.x",
-    "measured": "0.1.x",
     "fluent-logger": "0.1.x",
+    "knox": "0.3.x",
+    "measured": "0.1.x",
     "node-uuid": "1.3.x",
-    "knox": "0.3.x"
+    "vero": "github:hubdoc/vero-node"
   },
-  "devDependencies": {
-  },
-  "licenses" : [{
-    "type": "Apache",
-    "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-  }],
+  "devDependencies": {},
+  "licenses": [
+    {
+      "type": "Apache",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
   "engines": "node >= 0.8.9"
 }

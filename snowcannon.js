@@ -32,6 +32,7 @@ var config = require('./config');
 var cookieManager = require('./libs/cookie-manager');
 var responses = require('./libs/responses');
 var s3Sink = require('./libs/s3-sink');
+var veroSink = require('./libs/vero-sink');
 
 var pjson = require('./package.json');
 
@@ -51,6 +52,7 @@ var logToConsole = function(message) {
  * a line break
  */
 var logToSink = function(message) {
+    veroSink.log(message);
     var json = JSON.stringify(message),
         logrow = json;
     switch(config.sink.out) {
@@ -110,7 +112,7 @@ switch(config.sink.out) {
     case 'fluentd':
         // Configure the Fluentd logger
         fluentdSink.configure(config.sink.fluentd.mainTag, {
-            host: config.sink.fluentd.host,  
+            host: config.sink.fluentd.host,
             port: config.sink.fluentd.port,
             timeout: config.sink.fluentd.timeout
         });
