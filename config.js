@@ -31,7 +31,7 @@ config.cookie.domainName = undefined;
  * - stdout means SnowCannon will log events to stdout. Use your process control system (e.g. supervisord, daemontools, Angel) to handle the stdout eventstream
  * - fluentd means SnowCannon will use Fluentd (http://fluentd.org/) to collect events
  */
-config.sink.out = "s3"; // Or "s3" or "fluentd"
+config.sink.out = process.env.SINK_OUT || "s3"; // Or "s3" or "fluentd"
 
 /*
  * S3 configuration
