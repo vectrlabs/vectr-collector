@@ -6,7 +6,10 @@ var logger = new Vero(authToken, devMode);
 exports.log = function veroLog(event) {
   const data = event.data;
   // Only send strcture events.
-  if (data.e === 'se' && data.uid) {
+  if (
+    ( data.e === 'se' || data.e === 'pv' ) &&
+      data.uid
+  ) {
     var e = toVeroEvent(data);
     sendToVero(e);
   }
