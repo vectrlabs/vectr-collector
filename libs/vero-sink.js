@@ -5,14 +5,15 @@ var logger = new Vero(authToken, devMode);
 
 exports.log = function veroLog(event) {
   const data = event.data;
+  let e;
   // Only send strcture events.
-  if (
-    ( data.e === 'se' || data.e === 'pv' ) &&
-      data.uid
-  ) {
-    var e = toVeroEvent(data);
-    sendToVero(e);
+  if ( data.e === 'se' && data.uid) {
+    e = toVeroEvent(data);
   }
+  else if ( data.e === 'pv') {
+    e = toVeroViewedPageEvent(data);
+  }
+  sendToVero(e);
 }
 
 function toVeroEvent(data) {
@@ -22,6 +23,16 @@ function toVeroEvent(data) {
     id: data.uid,
     name: data.se_ca,
     data: data.co.data[0]
+  };
+}
+
+function toVeroViewedPageEvent(data) {
+  return {
+    id: data.uid || data.duid,
+    name: 'viewed_page',
+    data: {
+      url: data.url
+    }
   };
 }
 
