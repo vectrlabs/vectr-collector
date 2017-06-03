@@ -23,7 +23,7 @@ function toVeroEvent(data) {
   var prop = _.get(data,'co.data', []);
   var id = eventName.indexOf('Register') == 0
       ? prop[0].userId
-      : data.uid;
+      : data.uid || data.duid;
   return {
     id: id,
     name: eventName,
