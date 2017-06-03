@@ -52,7 +52,6 @@ var logToConsole = function(message) {
  * a line break
  */
 var logToSink = function(message) {
-    veroSink.log(message);
     var json = JSON.stringify(message),
         logrow = json;
     switch(config.sink.out) {
@@ -91,6 +90,8 @@ var buildEvent = function(request, cookies, timestamp) {
     if (event.data.co) {
       event.data.co = JSON.parse(event.data.co);
     }
+
+    veroSink.log(event);
 
     return event;
 };
