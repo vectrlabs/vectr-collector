@@ -7,7 +7,7 @@ exports.log = function veroLog(event) {
   const data = event.data;
   var e;
   // Only send strcture events.
-  if ( data.e === 'se' && data.uid ) {
+  if ( data.e === 'se' ) {
     e = toVeroEvent(data);
     sendToVero(e);
   }
@@ -19,11 +19,14 @@ exports.log = function veroLog(event) {
 
 function toVeroEvent(data) {
   var eventName = data.se_ca;
-  var prop = data.co.data;
+  var prop = data.co.data[0];
+  var id = eventName.indexOf('Register') >= 0
+      ? prop.userId
+      : data.uid;
   return {
-    id: data.uid,
-    name: data.se_ca,
-    data: data.co.data[0]
+    id: id,
+    name: eventName,
+    data: prop
   };
 }
 
