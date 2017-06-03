@@ -2,6 +2,7 @@ var Vero = require('vero').EventLogger;
 var authToken = process.env['VERO_TOKEN'];
 var devMode = false; // false in PRODN
 var logger = new Vero(authToken, devMode);
+var _ = require('lodash');
 
 exports.log = function veroLog(event) {
   const data = event.data;
