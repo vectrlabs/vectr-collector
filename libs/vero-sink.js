@@ -9,11 +9,12 @@ exports.log = function veroLog(event) {
   // Only send strcture events.
   if ( data.e === 'se' && data.uid) {
     e = toVeroEvent(data);
+    sendToVero(e);
   }
   else if ( data.e === 'pv') {
     e = toVeroViewedPageEvent(data);
+    sendToVero(e);
   }
-  sendToVero(e);
 }
 
 function toVeroEvent(data) {
@@ -28,7 +29,7 @@ function toVeroEvent(data) {
 
 function toVeroViewedPageEvent(data) {
   return {
-    id: data.uid || data.duid,
+    id: data.uid || data.duid || 'unknown',
     name: 'viewed_page',
     data: {
       url: data.url
