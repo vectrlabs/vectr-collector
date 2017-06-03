@@ -19,9 +19,9 @@ exports.log = function veroLog(event) {
 
 function toVeroEvent(data) {
   var eventName = data.se_ca;
-  var prop = data.co.data[0];
+  var prop = _.get(data,'co.data', []);
   var id = eventName.indexOf('Register') >= 0
-      ? prop.userId
+      ? prop[0].userId
       : data.uid;
   return {
     id: id,
