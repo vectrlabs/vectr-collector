@@ -27,7 +27,7 @@ function toVeroEvent(data) {
   return {
     id: id,
     name: eventName,
-    data: prop
+    data: prop[0]
   };
 }
 
