@@ -19,7 +19,7 @@ exports.log = function veroLog(event) {
 }
 
 function toVeroEvent(data) {
-  var eventName = data.se_ca | 'unknown';
+  var eventName = data.se_ca || 'unknown';
   var prop = _.get(data,'co.data', []);
   var id = eventName.indexOf('Register') == 0
       ? prop[0].userId
