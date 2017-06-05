@@ -22,12 +22,8 @@ function toVeroEvent(data) {
   var eventName = data.se_ca || 'unknown';
   var prop = _.get(data,'co.data', []);
   var id = eventName.indexOf('Register') == 0
-      ? prop[0].userId 
+      ? prop[0].userId
       : data.uid || data.duid;
-  if (eventName.indexOf('Register') == 0) {
-    console.log('regiser');
-    console.log(prop);
-  }
   return {
     id: id,
     name: eventName,
