@@ -34,7 +34,7 @@ s3Sink.upload = function(config) {
 		// TODO: is this a race condition?
 		console.log('Sending ' + s3Log.split("\n").length + ' events to S3 ' + uniqueName);
 		var outputLog = s3Log;
-		s3Log = [];
+		s3Log = "";
 
 		// Gzip the output
 		zlib.gzip(outputLog, function(err, buffer) {
